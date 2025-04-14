@@ -49,6 +49,7 @@ O servidor gerencia o banco de dados, processando os comandos do cliente de form
 1. Clone o repositório:
 
 git clone https://github.com/seu_usuario/engenharia-computacao.git
+
 cd engenharia-computacao/5_periodo/disciplinas/sistemas_operacionais/trabalho_m1
 
 2. Instale as dependências
