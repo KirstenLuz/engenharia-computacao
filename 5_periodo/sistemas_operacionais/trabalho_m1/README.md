@@ -58,20 +58,26 @@ O servidor gerencia o banco de dados, processando os comandos do cliente de form
 Como executar o projeto no GitHub Codespaces
 
 1. Abra o ambiente de Codespace
+   
    Na página do repositório engenharia-computacao, siga os passos:
    - Clique no botão **Code**
    - Selecione a aba **Codespaces**
    - Clique em **+ Create codespace on main**
 
 2. Acesse a pasta do projeto no terminal
+   
    Assim que o ambiente for carregado, no terminal integrado, digite o seguinte comando para navegar até a pasta do trabalho:
+   
    cd 5_periodo/disciplinas/sistemas_operacionais/trabalho_m1
 
 3. Execute o programa
+   
    No terminal, rode o programa com o comando:
+   
    python3 main.py
 
 4. Interaja com o sistema
+   
    O menu do cliente será exibido e você poderá testar as funcionalidades do sistema, como inserir, listar, buscar, atualizar e deletar registros.
 
 ## Exemplo de Execução
