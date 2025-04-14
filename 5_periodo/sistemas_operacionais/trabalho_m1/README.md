@@ -1,8 +1,58 @@
-# Trabalho M1 – Sistemas Operacionais
+# **Trabalho M1 – Sistemas Operacionais**
 
+## **Objetivo**
 Este projeto simula o funcionamento de um sistema de gerenciamento de banco de dados utilizando conceitos de:
 
 - Comunicação entre Processos (IPC)
 - Threads
 - Concorrência com Mutex
 - Processamento Paralelo
+
+## **Estrutura do Projeto**
+A estrutura do projeto está organizada da seguinte maneira:
+
+trabalho_m1/ 
+├── main.py # arquivo principal que inicializa a comunicação e os processos 
+├── cliente.py # arquivo que contém a lógica do cliente que se comunica com o servidor
+├── servidor.py # arquivo que contém a lógica do servidor que processa as requisições 
+├── banco.json # banco de dados simulado em formato JSON 
+├── pycache/ # pasta gerada automaticamente pelo Python
+└── .gitignore # arquivo para ignorar arquivos temporários como pycache
+
+## **Arquitetura do Sistema**
+O sistema é composto por dois componentes principais:
+
+### **1. Cliente**
+O cliente interage com o usuário e envia comandos para o servidor, como **INSERT**, **DELETE**, **SELECT**, **UPDATE**, e **LISTAR**.
+### **2. Servidor**
+O servidor gerencia o banco de dados, processando os comandos do cliente de forma concorrente com a utilização de threads e mutex para garantir a integridade dos dados.
+
+## **Tecnologias Utilizadas**
+- **Python 3.x**: Linguagem de programação utilizada.
+- **Multiprocessing**: Comunicação entre processos e execução paralela.
+- **Threading**: Para gerenciar múltiplas requisições simultâneas no servidor.
+- **JSON**: Para persistência de dados.
+- **Mutex**: Controle de concorrência e integridade dos dados.
+
+## **Como Rodar o Projeto**
+
+### **Pré-requisitos**
+- Python 3.x instalado.
+
+### **Passos para executar:**
+1. Clone o repositório:
+git clone https://github.com/seu_usuario/engenharia-computacao.git
+cd engenharia-computacao/5_periodo/disciplinas/sistemas_operacionais/trabalho_m1
+
+2. Instale as dependências
+pip install -r requirements.txt
+
+3. Execute o servidor:
+python servidor.py
+
+4. Execute o cliente em outro terminal:
+python cliente.py
+
+## Exemplo de Execução
+- O cliente apresentará um menu de opções para interagir com o banco de dados.
+- O servidor processa os comandos e responde ao cliente.
