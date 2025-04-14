@@ -12,11 +12,17 @@ Este projeto simula o funcionamento de um sistema de gerenciamento de banco de d
 A estrutura do projeto está organizada da seguinte maneira:
 
 trabalho_m1/ 
-├── main.py # arquivo principal que inicializa a comunicação e os processos 
+
+├── main.py # arquivo principal que inicializa a comunicação e os processos
+
 ├── cliente.py # arquivo que contém a lógica do cliente que se comunica com o servidor
+
 ├── servidor.py # arquivo que contém a lógica do servidor que processa as requisições 
+
 ├── banco.json # banco de dados simulado em formato JSON 
+
 ├── pycache/ # pasta gerada automaticamente pelo Python
+
 └── .gitignore # arquivo para ignorar arquivos temporários como pycache
 
 ## **Arquitetura do Sistema**
@@ -41,6 +47,7 @@ O servidor gerencia o banco de dados, processando os comandos do cliente de form
 
 ### **Passos para executar:**
 1. Clone o repositório:
+
 git clone https://github.com/seu_usuario/engenharia-computacao.git
 cd engenharia-computacao/5_periodo/disciplinas/sistemas_operacionais/trabalho_m1
 
