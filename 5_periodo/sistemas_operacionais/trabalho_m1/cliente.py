@@ -1,7 +1,7 @@
-# cliente.py
-def cliente_loop(conn):
+def cliente_loop(conexao_cliente):
+    #informa que está tudo certo
     print("Cliente conectado ao servidor.")
-    
+   
     while True:
         print("\nMENU DE OPERAÇÕES")
         print("=========================")
@@ -17,42 +17,52 @@ def cliente_loop(conn):
 
         if opcao == "1":
             try:
-                id = int(input("Digite o ID: "))
-                nome = input("Digite o nome: ")
-                conn.send(f"INSERT {id} {nome}")
-                print(conn.recv())
+                id_registro = int(input("Digite o ID: "))
+                nome_registro = input("Digite o nome: ")
+                #conexao_cliente é uma das pontas do pipe e .send é um método do pipe que envia os dados
+                # para a outra ponta do pipe que seria a conexão servidor (linha 94 servidor.py)
+                conexao_cliente.send(f"INSERT {id_registro} {nome_registro}")
+                #vai imprimir a resposta do servidor após processar o comando INSERT.
+                print(conexao_cliente.recv())
             except ValueError:
                 print("ID inválido. Digite um número inteiro.")
+
         elif opcao == "2":
             try:
-                id = int(input("Digite o ID para deletar: "))
-                conn.send(f"DELETE {id}")
-                print(conn.recv())
+                id_registro = int(input("Digite o ID para deletar: "))
+                conexao_cliente.send(f"DELETE {id_registro}")
+                print(conexao_cliente.recv())
             except ValueError:
                 print("ID inválido. Digite um número inteiro.")
+
         elif opcao == "3":
-            conn.send("LISTAR")
-            dados = conn.recv()
+            conexao_cliente.send("LISTAR")
+            registros = conexao_cliente.recv()
             print("\nRegistros armazenados:")
-            for registro in dados:
+            #para cada elemento (que chamamos de 'registro') dentro da lista 'registros', 
+            # ele executa a linha abaixo
+            for registro in registros:
                 print(f"ID: {registro['id']}, Nome: {registro['nome']}")
+
         elif opcao == "4":
             try:
-                id = int(input("Digite o ID para buscar: "))
-                conn.send(f"SELECT {id}")
-                print(conn.recv())
+                id_registro = int(input("Digite o ID para buscar: "))
+                conexao_cliente.send(f"SELECT {id_registro}")
+                print(conexao_cliente.recv())
             except ValueError:
                 print("ID inválido. Digite um número inteiro.")
+
         elif opcao == "5":
             try:
-                id = int(input("Digite o ID para atualizar: "))
+                id_registro = int(input("Digite o ID para atualizar: "))
                 novo_nome = input("Digite o novo nome: ")
-                conn.send(f"UPDATE {id} {novo_nome}")
-                print(conn.recv())
+                conexao_cliente.send(f"UPDATE {id_registro} {novo_nome}")
+                print(conexao_cliente.recv())
             except ValueError:
                 print("ID inválido. Digite um número inteiro.")
+
         elif opcao == "6":
-            conn.send("EXIT")
+            conexao_cliente.send("EXIT")
             print("Encerrando cliente...")
             break
         else:
