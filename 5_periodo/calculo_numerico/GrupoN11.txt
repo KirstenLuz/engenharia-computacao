@@ -1,0 +1,97 @@
+diary on
+% dados
+H = 20;
+a = 0;
+b = H/2;
+n = 8;
+h = (b - a)/ n;
+x = [a:h:b]';
+
+% função f(x) e derivada f'(x)
+f = H * cos(pi * x / H);
+df = -pi * sin(pi * x / H);
+
+% integral da área de revolução em torno de y
+y = x .* sqrt(1 + df.^2)
+
+y =
+
+         0
+    1.4661
+    3.9094
+    7.5433
+   12.1807
+   17.4813
+   23.0242
+   28.3451
+   32.9691
+
+% integração
+intT = Trapezios(a, b, h, y)
+
+intT =
+
+  138.0434
+
+S_trap = 2 * pi * intT;
+S_trap = 2 * pi * intT
+
+S_trap =
+
+  867.3520
+
+intS = Simpson(a, b, h, y) 
+
+intS =
+
+  137.7254
+
+ S_simp = 2 * pi * intS
+
+S_simp =
+
+  865.3544
+
+% rolos para cobrir o telhado
+areaRolo = 9;
+numRolosTrap = ceil(2 * S_trap / areaRolo)
+
+numRolosTrap =
+
+   193
+
+numRolosSimp = ceil(2 * S_simp / areaRolo)
+
+numRolosSimp =
+
+   193
+
+% rolos de tinta para cobrir área lateral
+altura = 2 * H
+
+altura =
+
+    40
+
+raio = H;
+areaLat = 2 * pi * raio * altura
+
+areaLat =
+
+   5.0265e+03
+
+numLatas = ceil(2 * areaLat / 90)
+
+numLatas =
+
+   112
+
+% gráfico
+xplot = linspace(-H/2, H/2, 100);
+yplot = H * cos(pi * xplot / H);
+plot(xplot, yplot) 
+xlabel('x')
+ylabel('f(x)')
+title('Kirsten')
+grid on
+diary off
