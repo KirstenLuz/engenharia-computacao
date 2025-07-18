@@ -1,0 +1,55 @@
+diary on
+format short
+
+% testes de fórmula
+fbi(0.5)
+
+ans =
+
+    0.0586
+
+fbi(2)
+
+ans =
+
+   -0.4577
+
+% análise gráfica
+Lim1 = 0.1; Lim2 = 2;
+x = (Lim1:0.01:Lim2)';
+y = fbi(x);
+plot(x,y)
+grid
+xlabel('Distância x(m)')
+ylabel('f(x)')
+title('Kirsten')
+
+% definindo o intervalo
+a = 0.9;
+b = 1.4;
+
+% método da bisseção
+erro = 1e-5;
+[Raiz, Iter] = bissecao(a, b, erro)
+
+Raiz =
+
+    1.1679
+
+
+Iter =
+
+    15
+
+% graficando a raiz
+x = (a:0.001:b)';
+y = fbi(x);
+plot(x,y)
+grid
+xlabel('Distância x (m)')
+ylabel('f(x)')
+title('Método da Bisseção - Kirsten')
+hold on
+plot(Raiz,fbi(Raiz), 'o')
+legend('f(x)')
+diary off
