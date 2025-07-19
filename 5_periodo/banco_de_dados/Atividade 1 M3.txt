@@ -1,0 +1,152 @@
+use ("New_Instagram")
+
+db.usuario.insertMany([{
+    _id: 1,
+    nome: "Pedro Henrique Schneider",
+    email: "phspedro2004@gmail.com",
+    dtNasc: new Date("2004-12-07"),
+    lstAmigos: [2,3,4,5],
+    posts: [2]
+}, {
+    _id: 2,
+    nome: "Isabella Zermani Bastos",
+    email: "is_bella@gmail.com",
+    dtNasc: new Date("2005-02-05"),
+    lstAmigos: [1,3],
+    posts: [1]
+}, {
+    _id: 3,
+    nome: "Kirsten Luz Concepcion",
+    email: "kiki_light@gmail.com",
+    dtNasc: new Date("2002-12-30"),
+    lstAmigos: [1,2],
+    posts: [3, 4]
+}, {
+    _id: 4,
+    nome: "Enzo Henrique Alexandrini",
+    email: "bat1509@gmail.com",
+    dtNasc: new Date("2004-12-06"),
+    lstAmigos: [1,5],
+    posts: [5]
+}, {
+    _id: 5,
+    nome: "Marco Antonio Drebes Melo",
+    email: "marcoantonio@gmail.com",
+    dtNasc: new Date("2004-10-17"),
+    lstAmigos: [1,4],
+    posts: [6]
+}])
+db.usuario.find()
+
+
+// INSERÇÃO DE PETS
+db.posts.insertMany([
+    {
+        _id: 1,
+        texto: "Muito legal passar o dia com meu amigo @pedro.schneider!",
+        dtPubl: new Date("2025-07-23"),
+        referencias: [1,2]
+    },
+    {
+        _id: 2,
+        texto: "Muito legal passar o dia com minha amiga @isabellaZb!",
+        dtPubl: new Date("2025-07-23"),
+        referencias: [1,2]
+    },
+    {
+        _id: 3,
+        texto: "caramba essa pedra parece um cachorro!",
+        dtPubl: new Date("2023-02-17"),
+        referencias: [3]
+    },
+    {
+        _id: 4,
+        texto: "Caramba, essa pedra parece TRÊS cachorros!",
+        dtPubl: new Date("2025-03-25"),
+        referencias: [3]
+    },
+    {
+        _id: 5,
+        texto: "olha, um tamândua bandeira, muito esquisito!",
+        dtPubl: new Date("2025-04-12"),
+        referencias: [4]
+    },
+    {
+        _id: 6,
+        texto: "Meu deus, esse jogo é muito dificil!",
+        dtPubl: new Date("2025-06-28"),
+        referencias: [5]
+    }
+
+])
+db.posts.find()
+
+
+// INSERÇÃO DE VETERINARIOS
+db.comentarios.insertMany([
+    {
+        _id: 1,
+        texto: "uau, realmente parecem três cachorros!",
+        dt_Pb: new Date("2025-03-26"),
+        autor: 2,
+        post: 4
+    }, {
+        _id: 2,
+        texto: "uau, não parece nada com três cachorros!",
+        dt_Pb: new Date("2025-03-27"),
+        autor: 1,
+        post: 4
+    }, {
+        _id: 3,
+        texto: "Foi muito legal!",
+        dt_Pb: new Date("2025-07-23"),
+        autor: 2,
+        post: 2
+    }, {
+        _id: 4,
+        texto: "Tu que é ruim, melhore",
+        dt_Pb: new Date("2025-06-29"),
+        autor: 1,
+        post: 6
+    }, {
+        _id: 5,
+        texto: "esse jogo é muito dificl mesmo",
+        dt_Pb: new Date("2025-06-30"),
+        autor: 4,
+        post: 6
+    }
+])
+db.comentarios.find()
+
+
+// INSERÇÃO DE CONSULTAS
+db.reacoes.insertMany([{
+    _id: 1,
+    tipo: "curtida",
+    dt_r: new Date("2025-03-26") ,
+    autor: 3,
+    post: 4,
+    comentario: 1
+}, {
+    _id: 2,
+    tipo: "amei",
+    dt_r: new Date("2025-07-23") ,
+    autor: 2,
+    post: 2,
+    comentario: 3
+}, {
+    _id: 3,
+    tipo: "curtida",
+    dt_r: new Date("2025-07-24") ,
+    autor: 3,
+    post: 2,
+    comentario: 3
+}, {
+    _id: 4,
+    tipo: "curtida",
+    dt_r: new Date("2025-06-28") ,
+    autor: 5,
+    post: 5,
+    comentario: 6
+}])
+db.reacoes.find()
