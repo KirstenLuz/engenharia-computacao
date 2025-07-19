@@ -1,0 +1,4 @@
+gcc driver.c list.c CPU.c schedule_rr_p.c -o scheduler
+./scheduler tarefas1.txt
+./scheduler tarefas2.txt
+./scheduler tarefas3.txt
