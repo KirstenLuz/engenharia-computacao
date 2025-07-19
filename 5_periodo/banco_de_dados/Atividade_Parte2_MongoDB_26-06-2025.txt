@@ -1,0 +1,103 @@
+
+// PARTE 2 – ATIVIDADE EM SALA MONGODB (26/06/2025)
+
+db.runCommand({
+  collMod: "usuario",
+  validator: {
+    $jsonSchema: {
+      bsonType: "object",
+      required: ["nome", "email", "dtNasc", "lstAmigos", "posts"],
+      properties: {
+        nome: { bsonType: "string" },
+        email: { bsonType: "string" },
+        dtNasc: { bsonType: "date" },
+        lstAmigos: {
+          bsonType: "array",
+          items: { bsonType: "int" }
+        },
+        posts: {
+          bsonType: "array",
+          items: { bsonType: "int" }
+        }
+      }
+    }
+  }
+});
+
+
+db.runCommand({
+  collMod: "reacoes",
+  validator: {
+    $jsonSchema: {
+      bsonType: "object",
+      required: ["tipo", "dt_r", "autor", "post"],
+      properties: {
+        tipo: { bsonType: "string" },
+        dt_r: { bsonType: "date" },
+        autor: { bsonType: "int" },
+        post: { bsonType: "int" },
+        comentario: { bsonType: "int" }
+      }
+    }
+  }
+});
+
+
+// posts
+db.runCommand({
+  collMod: "posts",
+  validator: {
+    $jsonSchema: {
+      bsonType: "object",
+      required: ["texto", "dtPubl", "referencias"],
+      properties: {
+        texto: { bsonType: "string" },
+        dtPubl: { bsonType: "date" },
+        referencias: {
+          bsonType: "array",
+          items: { bsonType: "int" }
+        }
+      }
+    }
+  }
+});
+
+// comentarios
+db.runCommand({
+  collMod: "comentarios",
+  validator: {
+    $jsonSchema: {
+      bsonType: "object",
+      required: ["texto", "dt_Pb", "autor", "post"],
+      properties: {
+        texto: { bsonType: "string" },
+        dt_Pb: { bsonType: "date" },
+        autor: { bsonType: "int" },
+        post: { bsonType: "int" }
+      }
+    }
+  }
+});
+
+// CONSULTAS
+
+// Apresentar os posts de um determinado usuário (ex: _id = 3)
+db.posts.find({ referencias: 3 });
+
+// Apresentar todos os comentários de um determinado post (ex: post = 4)
+db.comentarios.find({ post: 4 });
+
+// Apresentar todas as reações de um determinado post (ex: post = 2)
+db.reacoes.find({ post: 2 });
+
+// Apresentar os posts dos amigos do usuário (ex: usuário _id = 1)
+let amigos = db.usuario.findOne({ _id: 1 }).lstAmigos;
+db.posts.find({ referencias: { $in: amigos } });
+
+// Apresentar os posts publicados em um determinado período
+db.posts.find({
+  dtPubl: {
+    $gte: new Date("2025-03-01"),
+    $lte: new Date("2025-06-30")
+  }
+});
