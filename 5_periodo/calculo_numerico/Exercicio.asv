@@ -1,0 +1,15 @@
+Lim1 = 1; Lim2 = 2; delta = 0.0001;
+[Raiz1, Iter] = bissecao(Lim1, Lim2, delta)
+ Lim1 = 1; Lim2 = 2; delta = 0.0001;
+[Raiz1, Iter] = bissecao(Lim1, Lim2, delta)
+
+Raiz1 =
+
+    1.1141
+
+
+Iter =
+
+    13
+
+ x = (Lim1:0.01:Lim2)'
